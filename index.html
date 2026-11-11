@@ -4,40 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRYHOUNDZUL - AI by Zul</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{height:100vh;overflow:hidden;color:white;background:#0a0018}
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(135deg,#0a0018,#1a0033,#0d1b4a)}
-.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.7;animation:float 12s infinite alternate}
-.blob1{width:420px;height:420px;background:#A855F7;top:-80px;left:-80px}
-.blob2{width:380px;height:380px;background:#00E5FF;bottom:-80px;right:-40px;animation-delay:2s}
-.blob3{width:300px;height:300px;background:#EC4899;top:40%;left:45%;animation-delay:4s;opacity:.5}
-@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,30px) scale(1.15)}}
-.glass{background:rgba(255,255,255,.08);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.25);border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.3)}
-header{margin:14px 14px 0;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:800;font-size:19px;letter-spacing:.5px}
-.logo span{background:linear-gradient(90deg,#00E5FF,#A855F7,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.badge{font-size:11px;background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.2)}
-.btn{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:white;padding:8px 14px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600}
-.btn:hover{background:rgba(255,255,255,.25)}
-main{height:calc(100vh - 150px);margin:14px;display:flex;flex-direction:column}
-#chat{flex:1;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:14px}
-#chat::-webkit-scrollbar{width:5px}#chat::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:99px}
+body{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;color:#fff;background:#0a0018}
+.bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,#0a0018,#1a0033,#0d1b4a);overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.7}
+.b1{width:420px;height:420px;background:#A855F7;top:-80px;left:-80px}
+.b2{width:380px;height:380px;background:#00E5FF;bottom:-80px;right:-40px}
+.b3{width:300px;height:300px;background:#EC4899;top:40%;left:45%;opacity:.5}
+.glass{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.25);border-radius:24px}
+header{margin:14px 14px 0;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.logo{font-weight:800;font-size:19px}.logo span,.welcome h1 span{background:linear-gradient(90deg,#00E5FF,#A855F7,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge{font-size:11px;background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px}
+.btn{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;padding:8px 14px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600}
+main{flex:1;min-height:0;margin:14px;display:flex;flex-direction:column}
+#chat{flex:1;min-height:0;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:14px}
 .welcome{text-align:center;margin:auto;max-width:520px}
-.welcome h1{font-size:30px;line-height:1.2}
-.welcome h1 span{background:linear-gradient(90deg,#00E5FF,#A855F7,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.welcome p{opacity:.8;font-size:14px;margin:10px 0 18px}
+.welcome h1{font-size:30px;line-height:1.2}.welcome p{opacity:.8;font-size:14px;margin:10px 0 18px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .chip{cursor:pointer;padding:9px 14px;font-size:13px}
-.chip:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
-.msg{max-width:85%;padding:13px 16px;font-size:14.5px;line-height:1.6;animation:up .3s ease;white-space:pre-wrap;word-break:break-word}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.msg{max-width:85%;padding:13px 16px;font-size:14.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
 .msg.user{align-self:flex-end;background:linear-gradient(135deg,rgba(168,85,247,.5),rgba(236,72,153,.5));border-radius:22px 22px 4px 22px}
 .msg.ai{align-self:flex-start;border-radius:22px 22px 22px 4px}
 .msg.ai b{color:#00E5FF}
-.ai-label{font-size:11px;opacity:.7;margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.ai-label i{width:22px;height:22px;background:linear-gradient(135deg,#00E5FF,#A855F7);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:12px}
-.msg pre{background:rgba(0,0,0,.45);padding:12px;border-radius:14px;overflow-x:auto;font-size:13px;margin:8px 0;position:relative}
+.msg pre{background:rgba(0,0,0,.45);padding:12px;border-radius:14px;overflow-x:auto;font-size:13px;margin:8px 0;white-space:pre}
 .msg code{font-family:monospace}
-.copyBtn{position:absolute;top:6px;right:6px;background:rgba(255,255,255,.2);border:none;color:white;padding:4px 8px;border-radius:8px;cursor:pointer;font-size:11px}
+.inputBox{margin:0 14px 14px;display:flex;gap:10px;padding:10px;flex-shrink:0}
+.inputBox input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:15px;min-width:0}
+.inputBox input::placeholder{color:rgba(255,255,255,.6)}
+.send{width:44px;height:44px;flex-shrink:0;border-radius:50%;border:none;background:linear-gradient(135deg,#00E5FF,#A855F7);color:#fff;font-size:18px;cursor:pointer}
+.send:disabled,.inputBox input:disabled{opacity:.5;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<header class="glass"><div class="logo">TRY<span>HOUNDZUL</span></div><div style="display:flex;gap:8px;align-items:center"><span class="badge">AI by Zul • Online</span><button class="btn" onclick="newChat()" aria-label="Mulai chat baru">New Chat</button></div></header>
+<main><div id="chat"><div class="welcome" id="welcome"><h1>Halo, gue <span>TRYHOUNDZUL</span> 👋</h1><p>AI buatan Zul. Tanya apa aja, coding, tugas, curhat, semua bisa.</p><div class="chips"><div class="chip glass" onclick="ask(this)">Buatin caption IG keren</div><div class="chip glass" onclick="ask(this)">Jelasin fotosintesis simpel</div><div class="chip glass" onclick="ask(this)">Buatin kode HTML login</div><div class="chip glass" onclick="ask(this)">Bantuin PR Matematika</div></div></div></div></main>
+<div class="inputBox glass"><input id="inp" placeholder="Tanya apa aja ke TRYHOUNDZUL..." aria-label="Ketik pertanyaan" autocomplete="off"><button class="send" id="sendBtn" onclick="send()" aria-label="Kirim pesan">➤</button></div>
+<script>
+const chat=document.getElementById('chat'),inp=document.getElementById('inp'),sendBtn=document.getElementById('sendBtn');
+let hist=[];
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function fmt(t){let e=esc(t);e=e.replace(/```([\s\S]*?)```/g,(m,c)=>'<pre><code>'+c.trim()+'</code></pre>');return e.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>')}
+function welcomeHTML(){return '<div class="welcome" id="welcome"><h1>Halo, gue <span>TRYHOUNDZUL</span> 👋</h1><p>AI buatan Zul. Tanya apa aja, coding, tugas, curhat, semua bisa.</p><div class="chips"><div class="chip glass" onclick="ask(this)">Buatin caption IG keren</div><div class="chip glass" onclick="ask(this)">Jelasin fotosintesis simpel</div><div class="chip glass" onclick="ask(this)">Buatin kode HTML login</div><div class="chip glass" onclick="ask(this)">Bantuin PR Matematika</div></div></div>'}
+function newChat(){hist=[];chat.innerHTML=welcomeHTML();inp.value='';inp.focus()}
+function ask(el){inp.value=el.innerText;send()}
+function add(t,who,isHTML){let d=document.createElement('div');d.className='msg '+who;if(who==='ai')d.innerHTML='<div style="font-size:11px;opacity:.7;margin-bottom:6px">✨ TRYHOUNDZUL</div>'+(isHTML?fmt(t):esc(t));else d.textContent=t;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;return d}
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing)send()});
+async function send(){let q=inp.value.trim();if(!q||sendBtn.disabled)return;let w=document.getElementById('welcome');if(w)w.remove();add(q,'user');inp.value='';hist.push({role:'user',content:q});inp.disabled=true;sendBtn.disabled=true;let a=add('Ngetik...','ai');try{let r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:hist})});if(!r.ok)throw new Error('HTTP '+r.status);let j=await r.json();let reply=j.reply||'Maaf, belum ada balasan.';hist.push({role:'assistant',content:reply});a.innerHTML='<div style="font-size:11px;opacity:.7;margin-bottom:6px">✨ TRYHOUNDZUL</div>'+fmt(reply)}catch(e){a.innerHTML='<div style="font-size:11px;opacity:.7;margin-bottom:6px">✨ TRYHOUNDZUL</div>'+esc('Maaf, lagi ada gangguan. Coba lagi sebentar ya.')}finally{inp.disabled=false;sendBtn.disabled=false;inp.focus();chat.scrollTop=chat.scrollHeight}}
+</script>
+</body>
+  </html>
